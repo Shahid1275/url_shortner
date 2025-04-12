@@ -2,18 +2,6 @@
 
 A simple URL shortener application with separate frontend and backend. This README provides instructions for setting up and running the project, including environment variables and database configuration.
 
-## Table of Contents
-
-1. [Requirements](#requirements)
-2. [Environment Variables](#environment-variables)
-3. [Starting the Application](#starting-the-application)
-   - [Frontend](#frontend)
-   - [Backend](#backend)
-4. [Folder Structure](#folder-structure)
-5. [Database Setup](#database-setup)
-6. [Features](#features)
-7. [Contributing](#contributing)
-
 ## Requirements
 
 - Node.js (v20.x or later)

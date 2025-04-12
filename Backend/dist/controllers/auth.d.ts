@@ -1,0 +1,11 @@
+import { Request, Response } from 'express';
+export declare const signup: (req: Request, res: Response) => Promise<Response<any, Record<string, any>> | undefined>;
+export declare const login: (req: Request, res: Response) => Promise<Response<any, Record<string, any>>>;
+export declare const getUserRoles: (req: Request, res: Response) => Promise<void>;
+export declare const getUserRoleById: (req: Request, res: Response) => Promise<Response<any, Record<string, any>> | undefined>;
+export declare const getUsers: (req: Request, res: Response) => Promise<void>;
+export declare const getUserById: (req: Request, res: Response) => Promise<Response<any, Record<string, any>> | undefined>;
+export declare const updateUserRole: (req: Request, res: Response) => Promise<void>;
+export declare const updateUser: (req: Request, res: Response) => Promise<void>;
+export declare const deleteUserRole: (req: Request, res: Response) => Promise<void>;
+export declare const deleteUser: (req: Request, res: Response) => Promise<void>;

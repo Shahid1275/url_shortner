@@ -9,9 +9,9 @@ A simple URL shortener application with separate frontend and backend. This READ
 3. [Starting the Application](#starting-the-application)
    - [Frontend](#frontend)
    - [Backend](#backend)
-4.[Folder Structure](#folder-structure)
+4. [Folder Structure](#folder-structure)
 5. [Database Setup](#database-setup)
-6.[Features](#features)
+6. [Features](#features)
 7. [Contributing](#contributing)
 
 ## Requirements

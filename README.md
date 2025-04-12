@@ -1,88 +1,97 @@
-# URL Shortener System
+# URL Shortener
 
-A powerful and efficient **URL Shortener System** built using the **MERN stack** (MongoDB, Express.js, React.js, Node.js). This platform allows users to shorten long URLs into compact links, manage their generated URLs, and track basic information like usage statistics.
+A simple URL shortener application with separate frontend and backend. This README provides instructions for setting up and running the project, including environment variables and database configuration.
 
----
+## Table of Contents
 
-## Features
+1. [Requirements](#requirements)
+2. [Environment Variables](#environment-variables)
+3. [Starting the Application](#starting-the-application)
+   - [Frontend](#frontend)
+   - [Backend](#backend)
+4.[Folder Structure](#folder-structure)
+5. [Database Setup](#database-setup)
+6.[Features](#features)
+7. [Contributing](#contributing)
 
-- **URL Shortening**: Convert long URLs into short, user-friendly links.
-- **Custom Short URLs**: Option to create personalized short URLs.
-- **Redirect Functionality**: Automatically redirect short URLs to their original destinations.
-- **User Authentication**: Secure login and signup using JSON Web Tokens (JWT).
-- **Dashboard Management**: Manage, edit, and delete shortened URLs in a responsive React-based interface.
-- **Expiration Dates**: Set expiration dates for short URLs for better control.
-- **Clipboard Copying**: Quickly copy the shortened URL with one click.
-- **Statistics**: Basic statistics for tracking the number of times a short URL was accessed.
-- **Fully Responsive UI**: Clean and modern design optimized for all devices.
+## Requirements
 
----
+- Node.js (v20.x or later)
+- PostgreSQL (or your preferred SQL database due to prisma support)
+- `npm`
 
-## Tech Stack
+## Environment Variables
 
-### Frontend:
-- **React.js**: User interface and state management.
-- **Bootstrap/Tailwind CSS**: Styling for a clean and responsive UI.
+Create a `.env` file in the root of backend directory. The file should contain the following variables:
 
-### Backend:
-- **Node.js**: Server-side logic.
-- **Express.js**: Backend API and routing.
+### Backend (.env, .env.development, .env.production.)
 
-### Database:
-- **MongoDB**: NoSQL database for storing original and short URLs, as well as user data.
+```env
+# Backend
+DATABASE_URL=postgres://user:password@localhost:5432/yourdatabase
+JWT_SECRET=your_jwt_secret
+PORT=3000
 
-### Additional Tools:
-- **Mongoose**: ORM for MongoDB.
-- **JSON Web Tokens (JWT)**: Authentication and authorization.
-- **Nanoid**: For generating unique short URLs.
+NOTE: change the scripts in package.json depending upon your os to set NODE environment.
 
----
+### Frontend (.env)
 
-## Installation and Setup
+```env
+BASE_URL= "http://localhost:5173"
+```
 
-### Prerequisites:
-Ensure the following are installed on your system:
-- **Node.js** (v14+)
-- **MongoDB** (local or cloud-based like MongoDB Atlas)
-- **Git**
+## Starting the Application
 
-### Steps:
-1. Clone the repository:
+### Backend
+
+1. Navigate to the backend directory:
+
    ```bash
-   git clone https://github.com/your-username/url-shortener-system.git
-   cd url-shortener-system
+   cd backend
    ```
 
 2. Install dependencies:
+
    ```bash
    npm install
-   cd client && npm install
    ```
 
-3. Set up environment variables:
-   Create a `.env` file in the root directory and configure the following:
-   ```
-   PORT=5000
-   MONGO_URI=your_mongodb_connection_string
-   JWT_SECRET=your_jwt_secret_key
-   ```
+3. Run migrations to set up the database schema:
 
-4. Run the backend server:
    ```bash
-   npm run server
+   npx run migrate
    ```
 
-5. Start the frontend:
+4. Start the backend server:
+
    ```bash
-   cd client
-   npm start
+   npm run start:dev
    ```
 
-6. Access the application:
-   Open [http://localhost:3000](http://localhost:3000) in your browser.
+   The backend server will be running on `http://localhost:3000` by default.
 
----
+### Frontend
 
+1. Navigate to the frontend directory:
+
+   ```bash
+   cd frontend
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+3. Start the frontend development server:
+
+   ```bash
+   npm run dev
+   ```
+
+   The frontend application will be running on `http://localhost:5173` by default.
+```
 ## Folder Structure
 
 ```
@@ -97,31 +106,205 @@ url-shortener-system/
 └── README.md        # Project documentation
 ```
 
----
+## Database Setup
 
-## Usage
+Ensure you have PostgreSQL or your preferred SQL database set up. Create a database for the URL shortener application.
 
-1. **Signup/Login** to access the dashboard.
-2. Paste your **long URL** into the input field and click **"Generate Short URL"**.
-3. Copy the generated short URL and share it with others.
-4. Use the dashboard to manage and track all your short URLs.
+1. **Create Database:**
 
----
+   Connect to your database and create a new database:
 
-## Future Enhancements
+   ```sql
+   CREATE DATABASE url_shortner;
+   ```
 
-- **QR Code Generation**: Provide QR codes for shortened URLs.
-- **Advanced Analytics**: Track clicks, geographical data, and device types.
-- **Custom Domain Support**: Allow users to use their own domains for shortened URLs.
+2. **Update `.env` File:**
 
----
+   Update the `DATABASE_URL` variable in the `.env` file with your database credentials.
 
-## License
+```
+psql -U postgres -d url_shortner -f seed.sql
+```
 
-This project is open-source and available under the [MIT License](LICENSE).
+The passwords are stored in hashed form for security. Ensure your application uses appropriate hashing methods to match this data.
+
+```
+## Features
+
+- **URL Shortening**: Convert long URLs into short, user-friendly links.
+- **Custom Short URLs**: Option to create personalized short URLs.
+- **Redirect Functionality**: Automatically redirect short URLs to their original destinations.
+- **User Authentication**: Secure login and signup using JSON Web Tokens (JWT).
+- **Dashboard Management**: Manage, edit, and delete shortened URLs in a responsive React-based interface.
+- **Expiration Dates**: Set expiration dates for short URLs for better control.
+- **Clipboard Copying**: Quickly copy the shortened URL with one click.
+- **Statistics**: Basic statistics for tracking the number of times a short URL was accessed.
+- **Fully Responsive UI**: Clean and modern design optimized for all devices.
 
 ---
 
 ## Contributing
 
-Contributions are welcome! Feel free to open issues or submit pull requests to enhance the system.
+Contributions are welcome! Please follow these steps to contribute:
+
+1. Fork the repository.
+2. Create a new branch for your feature or bugfix.
+3. Make your changes and ensure tests pass.
+4. Submit a pull request with a description of your changes.
+
+---
+# URL Shortener
+
+A simple URL shortener application with separate frontend and backend. This README provides instructions for setting up and running the project, including environment variables and database configuration.
+
+## Table of Contents
+
+1. [Requirements](#requirements)
+2. [Environment Variables](#environment-variables)
+3. [Starting the Application](#starting-the-application)
+   - [Frontend](#frontend)
+   - [Backend](#backend)
+4.[Folder Structure](#folder-structure)
+5. [Database Setup](#database-setup)
+6.[Features](#features)
+7. [Contributing](#contributing)
+
+## Requirements
+
+- Node.js (v20.x or later)
+- PostgreSQL (or your preferred SQL database due to prisma support)
+- `npm`
+
+## Environment Variables
+
+Create a `.env` file in the root of backend directory. The file should contain the following variables:
+
+### Backend (.env, .env.development, .env.production.)
+
+```env
+# Backend
+DATABASE_URL=postgres://user:password@localhost:5432/yourdatabase
+JWT_SECRET=your_jwt_secret
+PORT=3000
+
+NOTE: change the scripts in package.json depending upon your os to set NODE environment.
+
+### Frontend (.env)
+
+```env
+BASE_URL= "http://localhost:5173"
+```
+
+## Starting the Application
+
+### Backend
+
+1. Navigate to the backend directory:
+
+   ```bash
+   cd backend
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+3. Run migrations to set up the database schema:
+
+   ```bash
+   npx run migrate
+   ```
+
+4. Start the backend server:
+
+   ```bash
+   npm run start:dev
+   ```
+
+   The backend server will be running on `http://localhost:3000` by default.
+
+### Frontend
+
+1. Navigate to the frontend directory:
+
+   ```bash
+   cd frontend
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+3. Start the frontend development server:
+
+   ```bash
+   npm run dev
+   ```
+
+   The frontend application will be running on `http://localhost:5173` by default.
+```
+## Folder Structure
+
+```
+url-shortener-system/
+├── client/          # React frontend
+├── server/          # Node.js and Express backend
+├── models/          # MongoDB models
+├── routes/          # API routes
+├── controllers/     # Business logic for APIs
+├── middlewares/     # Authentication and validation middleware
+├── utils/           # Helper functions
+└── README.md        # Project documentation
+```
+
+## Database Setup
+
+Ensure you have PostgreSQL or your preferred SQL database set up. Create a database for the URL shortener application.
+
+1. **Create Database:**
+
+   Connect to your database and create a new database:
+
+   ```sql
+   CREATE DATABASE url_shortner;
+   ```
+
+2. **Update `.env` File:**
+
+   Update the `DATABASE_URL` variable in the `.env` file with your database credentials.
+
+```
+psql -U postgres -d url_shortner -f seed.sql
+```
+
+The passwords are stored in hashed form for security. Ensure your application uses appropriate hashing methods to match this data.
+
+```
+## Features
+
+- **URL Shortening**: Convert long URLs into short, user-friendly links.
+- **Custom Short URLs**: Option to create personalized short URLs.
+- **Redirect Functionality**: Automatically redirect short URLs to their original destinations.
+- **User Authentication**: Secure login and signup using JSON Web Tokens (JWT).
+- **Dashboard Management**: Manage, edit, and delete shortened URLs in a responsive React-based interface.
+- **Expiration Dates**: Set expiration dates for short URLs for better control.
+- **Clipboard Copying**: Quickly copy the shortened URL with one click.
+- **Statistics**: Basic statistics for tracking the number of times a short URL was accessed.
+- **Fully Responsive UI**: Clean and modern design optimized for all devices.
+
+---
+
+## Contributing
+
+Contributions are welcome! Please follow these steps to contribute:
+
+1. Fork the repository.
+2. Create a new branch for your feature or bugfix.
+3. Make your changes and ensure tests pass.
+4. Submit a pull request with a description of your changes.
+
+---
